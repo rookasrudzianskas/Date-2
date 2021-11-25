@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image} f
 import {useNavigation} from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
-import {Ionicons} from "@expo/vector-icons";
+import {Entypo, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
 
 const DUMMY_DATA = [
@@ -73,6 +73,7 @@ const HomeScreen = () => {
                     stackSize={5}
                     cardIndex={0}
                     backgroundColor="#4FD0E9"
+                    ref={swipeRef}
                     onSwipedLeft={() => {
                         console.log('swiped left passed');
                     }}
@@ -117,6 +118,17 @@ const HomeScreen = () => {
                 />
             </View>
 
+            <View style={tw('flex flex-row justify-evenly')}>
+
+                <TouchableOpacity>
+                    <Entypo name={'cross'} size={30} />
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                    <Entypo name={'cross'} size={30} />
+                </TouchableOpacity>
+
+            </View>
             {/*<Button onPress={() => navigation.navigate('Chat')} title={'Go to chat Screen'}/>*/}
             {/*<Button onPress={logout} title={'Log Out'}/>*/}
         </SafeAreaView>

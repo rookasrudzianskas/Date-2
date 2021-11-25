@@ -10,8 +10,8 @@ const HomeScreen = () => {
 
     return (
         <View>
-            <Button onPress={() => navigation.navigate('Chat')} title={'Go to chat Screen'}/>
-            <Button onPress={logout} title={'Log Out'}/>
+            {/*<Button onPress={() => navigation.navigate('Chat')} title={'Go to chat Screen'}/>*/}
+            {/*<Button onPress={logout} title={'Log Out'}/>*/}
         </View>
     );
 };

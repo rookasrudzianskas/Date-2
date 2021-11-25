@@ -1,4 +1,4 @@
-import React, {createContext, useContext} from 'react';
+import React, {createContext, useState, useContext} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import * as Google from 'expo-google-app-auth';
 import {
@@ -25,7 +25,11 @@ const config = {
 
 export const AuthProvider = ({ children }) => {
 
+    const [error, setError] = useState(null);
 
+    useEffect(() =>  {
+
+    }, [auth]);
 
     const signInWithGoogle = async () => {
         await Google.logInAsync(config).then(async (loginResult) => {
@@ -36,6 +40,8 @@ export const AuthProvider = ({ children }) => {
                 await signInWithCredential(auth, credential);
             }
             return Promise.reject();
+        }).catch(err => {
+            setError(err);
         });
     }
 

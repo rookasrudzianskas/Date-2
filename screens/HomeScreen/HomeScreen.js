@@ -22,8 +22,8 @@ const HomeScreen = () => {
         <SafeAreaView>
             {/* header */}
 
-            <View style={tw('items-center relative')}>
-                <TouchableOpacity activeOpacity={0.5} style={tw('absolute left-5 top-3')}>
+            <View style={tw('items-center flex-row justify-between px-5')}>
+                <TouchableOpacity activeOpacity={0.5} style={tw('')}>
                     <Image source={{ uri: user?.photoURL }} style={tw('h-10 w-10 rounded-full')} />
                 </TouchableOpacity>
 
@@ -31,7 +31,7 @@ const HomeScreen = () => {
                     <Image source={require('../../assets/tinder.png')} style={tw('h-14 w-14')} />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={tw('absolute right-5 top-3')} activeOpacite={0.5}>
+                <TouchableOpacity style={tw('')} activeOpacite={0.5}>
                     <Ionicons name="chatbubbles-sharp" size={30} />
                 </TouchableOpacity>
 

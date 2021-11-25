@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
             }
             setLoadingInitial(false);
         });
-        return unsub();
+        return () => unsub();
     }, []);
 
 

@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
 
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
+    const [loadingInitial, setLoadingInitial] = useState(true);
 
     useEffect(() =>  {
         onAuthStateChanged(auth, (user) => {
@@ -37,6 +38,8 @@ export const AuthProvider = ({ children }) => {
                 // logged out
                 setUser(null);
             }
+
+            setLoadingInitial(false);
         });
     }, []);
 

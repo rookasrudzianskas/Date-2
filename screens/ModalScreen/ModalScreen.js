@@ -3,6 +3,8 @@ import {Text, View, StyleSheet, Image, TextInput, TouchableOpacity} from 'react-
 import {useNavigation} from "@react-navigation/native";
 import tw from "tailwind-rn";
 import useAuth from "../../hooks/useAuth";
+import {doc, serverTimestamp, setDoc} from '@firebase/firestore';
+import {db} from "../../firebase";
 
 const ModalScreen = () => {
 
@@ -20,6 +22,19 @@ const ModalScreen = () => {
     const [age, setAge] = useState(null);
 
     const incompleteForm = !image || !job || !age;
+
+    const updateUserProfile = () => {
+        // add the user document to the firestore
+        setDoc(doc(db, 'users', user.uid), {
+            id: user.uid,
+            displayName: user.displayName,
+            photoURL: image,
+            job: job,
+            age: age,
+            timestamp: serverTimestamp(),
+        });
+    }
+
 
     return (
         <View style={tw('flex-1 items-center pt-1')}>

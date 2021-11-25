@@ -7,6 +7,7 @@ import {
     signInWithCredential,
     signOut,
 } from '@firebase/auth';
+import {auth} from "../firebase";
 
 const AuthContext = createContext({
     // initial state (empty)
@@ -27,12 +28,12 @@ export const AuthProvider = ({ children }) => {
 
 
     const signInWithGoogle = async () => {
-        Google.logInAsync(config).then(async (loginResult) => {
+        await Google.logInAsync(config).then(async (loginResult) => {
             if(loginResult.type === 'success') {
             //    login
                 const {idToken, accessToken } = loginResult;
                 const credential = GoogleAuthProvider.credential(idToken, accessToken);
-                await signInWithCredential(credential);
+                await signInWithCredential(auth, credential);
             }
             return Promise.reject();
         });

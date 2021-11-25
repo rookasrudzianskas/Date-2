@@ -6,7 +6,7 @@ import StackNavigator from "./navigation/StackNavigator";
 import {NavigationContainer} from "@react-navigation/native";
 import {AuthProvider} from "./hooks/useAuth";
 import { LogBox } from 'react-native';
-LogBox.ignoreAllLogs(); // ignore all logs
+LogBox.ignoreAllLogs(true); // ignore all logs
 
 export default function App() {
   return (

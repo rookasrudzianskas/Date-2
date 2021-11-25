@@ -11,6 +11,7 @@ export default function App() {
     <NavigationContainer>
         {/* higher order component, pattern, where we have higher order components (just wrapping)*/}
         <AuthProvider>
+            {/* passes the auth stuff to the children */}
             <StackNavigator />
             <StatusBar style="auto" />
         </AuthProvider>

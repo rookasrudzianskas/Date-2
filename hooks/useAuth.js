@@ -8,6 +8,7 @@ import {
     signOut,
 } from '@firebase/auth';
 import {auth} from "../firebase";
+import tw from 'tailwind-rn';
 
 const AuthContext = createContext({
     // initial state (empty)
@@ -62,7 +63,7 @@ export const AuthProvider = ({ children }) => {
             signInWithGoogle
         }}>
             {loadingInitial ? (
-                <View>
+                <View style={tw('flex items-center justify-center')}>
                     <ActivityIndicator size={'large'} color={'blue'} />
                 </View>
             ) : (

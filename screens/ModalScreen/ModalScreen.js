@@ -72,6 +72,8 @@ const ModalScreen = () => {
                 onChangeText={text => setAge(text)}
                 style={tw('text-center text-xl pb-2')}
                 placeholder="Enter your age"
+                maxlength={2}
+                keyboardType='numeric'
             />
 
             {/* end of the age 📹 ------------- */}

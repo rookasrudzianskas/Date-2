@@ -103,7 +103,7 @@ const HomeScreen = () => {
                         <View key={i} style={tw('bg-white  h-3/4 rounded-xl relative')}>
                             <Image source={{ uri: card?.photoUrl }} style={tw('absolute h-full w-full rounded-xl')} />
 
-                            <View style={[tw('bg-white flex-row w-full h-20 absolute bottom-0 justify-between items-between px-6 py-2 rounded-b-xl'), styles.cardShadow]}>
+                            <View style={[tw('bg-white flex-row w-full h-20 absolute bottom-0 justify-between items-center px-6 py-2 rounded-b-xl'), styles.cardShadow]}>
                                 <View>
                                     <Text style={tw('text-xl font-bold')} >{card?.firstName} {card?.lastName}</Text>
                                     <Text >{card?.job}</Text>

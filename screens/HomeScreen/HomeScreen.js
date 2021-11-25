@@ -53,7 +53,7 @@ const HomeScreen = () => {
                     <Image source={{ uri: user?.photoURL }} style={tw('h-10 w-10 rounded-full')} />
                 </TouchableOpacity>
 
-                <TouchableOpacity activeOpacity={0.5}>
+                <TouchableOpacity onPress={() => navigation.navigate('Modal')} activeOpacity={0.5}>
                     <Image source={require('../../assets/tinder.png')} style={tw('h-14 w-14')} />
                 </TouchableOpacity>
 

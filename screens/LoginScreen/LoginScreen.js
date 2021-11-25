@@ -9,7 +9,9 @@ const LoginScreen = () => {
     const navigation = useNavigation();
 
     useLayoutEffect(() => {
-
+        navigation.setOptions({
+            headerShown: false
+        })
     }, []);
 
     return (

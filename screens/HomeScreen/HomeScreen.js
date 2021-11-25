@@ -82,11 +82,11 @@ const HomeScreen = () => {
                             }
                         },
                         right: {
-                            title: 'LIKE',
+                            title: 'MATCH',
                             style: {
                                 label: {
                                     textAlign: 'left',
-                                    color: 'green',
+                                    color: '#4DED30',
                                 }
                             }
                         }

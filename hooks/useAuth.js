@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     const [loadingInitial, setLoadingInitial] = useState(true);
     const [loading, setLoading] = useState(false);
 
-    useEffect(() =>  {
+    useEffect(() => {
         const unsub = onAuthStateChanged(auth, (user) => {
             if(user) {
                 // logged in
@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }) => {
             }
             setLoadingInitial(false);
         });
+        return unsub();
     }, []);
 
 

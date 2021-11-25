@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useRef} from 'react';
 import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
@@ -34,6 +34,7 @@ const HomeScreen = () => {
     const navigation = useNavigation();
 
     const {logout, user} = useAuth();
+    const swipeRef = useRef(null);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -71,6 +72,7 @@ const HomeScreen = () => {
                     cards={DUMMY_DATA}
                     stackSize={5}
                     cardIndex={0}
+                    backgroundColor="#4FD0E9"
                     onSwipedLeft={() => {
                         console.log('swiped left passed');
                     }}

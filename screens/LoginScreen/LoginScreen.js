@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {Text, View, StyleSheet, Button} from 'react-native';
 import useAuth from "../../hooks/useAuth";
 import {useNavigation} from "@react-navigation/native";
@@ -7,6 +7,10 @@ const LoginScreen = () => {
 
     const {signInWithGoogle, loading} = useAuth();
     const navigation = useNavigation();
+
+    useLayoutEffect(() => {
+
+    }, []);
 
     return (
         <View>

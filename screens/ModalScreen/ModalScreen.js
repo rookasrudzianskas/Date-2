@@ -1,4 +1,4 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import {Text, View, StyleSheet, Image, TextInput, TouchableOpacity} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import tw from "tailwind-rn";
@@ -15,6 +15,9 @@ const ModalScreen = () => {
     }, []);
 
     const {user} = useAuth();
+    const [image, setImage]  = useState(null);
+    const [job, setJob] = useState(null);
+    const [age, setAge] = useState(null);
 
     return (
         <View style={tw('flex-1 items-center pt-1')}>
@@ -35,6 +38,8 @@ const ModalScreen = () => {
             </Text>
 
             <TextInput
+                value={image}
+                onChangeText={text => setImage(text)}
                 style={tw('text-center text-xl pb-2')}
                 placeholder="Enter Profile Pic URL"
             />
@@ -47,6 +52,8 @@ const ModalScreen = () => {
             </Text>
 
             <TextInput
+                value={job}
+                onChangeText={text => setJob(text)}
                 style={tw('text-center text-xl pb-2')}
                 placeholder="Enter your occupation"
             />
@@ -59,6 +66,8 @@ const ModalScreen = () => {
             </Text>
 
             <TextInput
+                value={age}
+                onChangeText={text => setAge(text)}
                 style={tw('text-center text-xl pb-2')}
                 placeholder="Enter your age"
             />

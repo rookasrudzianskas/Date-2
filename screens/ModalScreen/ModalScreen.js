@@ -97,7 +97,7 @@ const ModalScreen = () => {
 
             {/* end of the age 📹 ------------- */}
 
-            <TouchableOpacity disabled={incompleteForm} activeOpacity={0.5} style={
+            <TouchableOpacity onPress={updateUserProfile} disabled={incompleteForm} activeOpacity={0.5} style={
                 incompleteForm ? tw('bg-gray-400 w-64 p-3 rounded-xl absolute bottom-10 ') : tw('w-64 p-3 rounded-xl absolute bottom-10 bg-red-400')
             }>
                 <Text style={tw('text-center text-white text-xl')}>Update Profile</Text>

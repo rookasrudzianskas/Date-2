@@ -19,6 +19,8 @@ const ModalScreen = () => {
     const [job, setJob] = useState(null);
     const [age, setAge] = useState(null);
 
+    const incompleteForm = !image || !job || !age;
+
     return (
         <View style={tw('flex-1 items-center pt-1')}>
             <Image
@@ -74,7 +76,9 @@ const ModalScreen = () => {
 
             {/* end of the age 📹 ------------- */}
 
-            <TouchableOpacity activeOpacity={0.5} style={tw('w-64 p-3 rounded-xl absolute bottom-10 bg-red-400')}>
+            <TouchableOpacity disabled={incompleteForm} activeOpacity={0.5} style={
+                incompleteForm ? tw('bg-gray-400 w-64 p-3 rounded-xl absolute bottom-10 ') : tw('w-64 p-3 rounded-xl absolute bottom-10 bg-red-400')
+            }>
                 <Text style={tw('text-center text-white text-xl')}>Update Profile</Text>
             </TouchableOpacity>
 

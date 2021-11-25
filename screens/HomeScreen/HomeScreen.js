@@ -1,7 +1,8 @@
 import React, {useLayoutEffect} from 'react';
-import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
+import tw from "tailwind-rn";
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -14,14 +15,17 @@ const HomeScreen = () => {
         });
     }, []);
 
+    // console.log(user)
+
     return (
         <SafeAreaView>
             {/* header */}
 
             <View>
                 <TouchableOpacity>
-
+                    <Image source={{ uri: user?.photoURL }} style={tw('h-10 w-10 rounded-full')} />
                 </TouchableOpacity>
+
             </View>
 
             {/* End of the header */}

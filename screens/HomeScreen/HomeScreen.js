@@ -59,7 +59,7 @@ const HomeScreen = () => {
 
         const fetchCards = () => {
             const unsub = onSnapshot(collection(db, 'users'), snapshot => {
-                setProfiles(snapshot.docs.map(doc => ({
+                setProfiles(snapshot.docs.filter(doc => doc.id !== user.uid).map(doc => ({
                         id: doc.id,
                         ...doc.data(),
                     }))

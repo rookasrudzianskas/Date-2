@@ -4,9 +4,7 @@ import { Text, View, StyleSheet } from 'react-native';
 const LoginScreen = () => {
     return (
         <View>
-            <Text>
-                byrookas 🚀
-            </Text>
+            <Text>Login to the app</Text>
         </View>
     );
 };

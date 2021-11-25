@@ -41,7 +41,6 @@ export const AuthProvider = ({ children }) => {
             }
             setLoadingInitial(false);
         });
-        return unsub();
     }, []);
 
 
@@ -71,6 +70,8 @@ export const AuthProvider = ({ children }) => {
             setError(err);
         }).finally(() => setLoading(false));
     }
+
+    const memoedValue = useMemo();
 
     return (
         <AuthContext.Provider value={{

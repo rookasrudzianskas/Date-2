@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
 import {AntDesign, Entypo, FontAwesome5, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
-import {collection, doc, onSnapshot, setDoc} from "@firebase/firestore";
+import {collection, doc, getDocs, onSnapshot, setDoc} from "@firebase/firestore";
 import {db} from "../../firebase";
 
 const DUMMY_DATA = [
@@ -58,6 +58,13 @@ const HomeScreen = () => {
         let unsub;
 
         const fetchCards = () => {
+
+            const passes = getDocs(collection(db, 'users', user.uid, 'passes')).then(snapshot => (
+                snapshot.docs.map(doc => doc.id)
+            ));
+
+            const passedUserIds = passes.length > 0 ? passes : ['test'];
+
             const unsub = onSnapshot(collection(db, 'users'), snapshot => {
                 setProfiles(snapshot.docs.filter(doc => doc.id !== user.uid).map(doc => ({
                         id: doc.id,

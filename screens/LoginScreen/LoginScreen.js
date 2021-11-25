@@ -21,8 +21,8 @@ const LoginScreen = () => {
                 resizeMode={'cover'}
                 style={tw("flex-1" )}
                 source={{ uri: 'https://tinder.com/static/tinder.png' }}>
-                <TouchableOpacity style={[tw("absolute bottom-40 w-52 bg-white rounded-2xl p-4"), { marginHorizontal: '25%'}]} activeOpacity={0.5}>
-                    <Text style={tw("text-center")}>Sign in & get swiping</Text>
+                <TouchableOpacity onPress={signInWithGoogle} style={[tw("absolute bottom-40 w-52 bg-white rounded-2xl p-4"), { marginHorizontal: '25%'}]} activeOpacity={0.5}>
+                    <Text style={tw("text-center font-semibold")}>Sign in & get swiping</Text>
                 </TouchableOpacity>
             </ImageBackground>
         </View>

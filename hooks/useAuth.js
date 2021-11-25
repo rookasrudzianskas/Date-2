@@ -82,7 +82,6 @@ export const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={memoedValue}>
             {!loadingInitial && children}
-
         </AuthContext.Provider>
     );
 };

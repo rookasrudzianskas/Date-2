@@ -72,6 +72,10 @@ const HomeScreen = () => {
         return () => unsub();
     }, []);
 
+    const swipeLeft = async () => {
+
+    }
+
     // console.log(profiles);
 
     return (
@@ -104,11 +108,13 @@ const HomeScreen = () => {
                     cardIndex={0}
                     backgroundColor="#4FD0E9"
                     ref={swipeRef}
-                    onSwipedLeft={() => {
-                        console.log('swiped left passed');
+                    onSwipedLeft={(cardIndex) => {
+                        // console.log('swiped left passed');
+                        swipeLeft(cardIndex)
                     }}
-                    onSwipedRight={() => {
-                        console.log('swiped right matched');
+                    onSwipedRight={(cardIndex) => {
+                        // console.log('swiped right matched');
+                        swipeLeft(cardIndex)
                     }}
                     overlayLabels={{
                         left: {

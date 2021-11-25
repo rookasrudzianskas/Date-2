@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image} f
 import {useNavigation} from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
+import {Ionicons} from "@expo/vector-icons";
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -28,6 +29,10 @@ const HomeScreen = () => {
 
                 <TouchableOpacity activeOpacity={0.5}>
                     <Image source={require('../../assets/tinder.png')} style={tw('h-14 w-14')} />
+                </TouchableOpacity>
+
+                <TouchableOpacity style={tw('absolute right-5 top-3')} activeOpacite={0.5}>
+                    <Ionicons name="chatbubbles-sharp" size={30} />
                 </TouchableOpacity>
 
             </View>

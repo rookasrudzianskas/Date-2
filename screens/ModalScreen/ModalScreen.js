@@ -1,5 +1,5 @@
 import React, {useLayoutEffect} from 'react';
-import {Text, View, StyleSheet, Image, TextInput} from 'react-native';
+import {Text, View, StyleSheet, Image, TextInput, TouchableOpacity} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import tw from "tailwind-rn";
 import useAuth from "../../hooks/useAuth";
@@ -65,6 +65,9 @@ const ModalScreen = () => {
 
             {/* end of the age 📹 ------------- */}
 
+            <TouchableOpacity activeOpacity={0.5} style={tw('w-64 p-3 rounded-xl absolute bottom-10 bg-red-400')}>
+                <Text style={tw('text-center text-white text-xl')}>Update Profile</Text>
+            </TouchableOpacity>
 
         </View>
     );

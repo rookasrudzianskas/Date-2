@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 
         await Google.logInAsync(config).then(async (loginResult) => {
             if(loginResult.type === 'success') {
-            //    login
+                //    login
                 const {idToken, accessToken } = loginResult;
                 const credential = GoogleAuthProvider.credential(idToken, accessToken);
                 await signInWithCredential(auth, credential);
@@ -71,16 +71,16 @@ export const AuthProvider = ({ children }) => {
         }).finally(() => setLoading(false));
     }
 
-    const memoedValue = useMemo();
+    const memoedValue = useMemo(() => ({
+        user,
+        loading,
+        error,
+        logout,
+        signInWithGoogle,
+    }), [user, loading, error]);
 
     return (
-        <AuthContext.Provider value={{
-            user,
-            loading,
-            error,
-            logout,
-            signInWithGoogle
-        }}>
+        <AuthContext.Provider value={memoedValue}>
             {!loadingInitial && children}
 
         </AuthContext.Provider>

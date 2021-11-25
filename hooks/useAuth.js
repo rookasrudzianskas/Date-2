@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 
         await Google.logInAsync(config).then(async (loginResult) => {
             if(loginResult.type === 'success') {
-                //    login
+                //login
                 const {idToken, accessToken } = loginResult;
                 const credential = GoogleAuthProvider.credential(idToken, accessToken);
                 await signInWithCredential(auth, credential);

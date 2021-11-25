@@ -5,9 +5,9 @@ import * as Google from 'expo-google-app-auth';
 
 const AuthContext = createContext({
     // initial state (empty)
-    const signInWithGoogle = async () => {
-
-    }
+    // const signInWithGoogle = async () => {
+    //     await Google.logInAsync(config);
+    // }
 
 });
 

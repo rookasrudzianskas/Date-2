@@ -4,12 +4,16 @@ import {Button, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import tw from "tailwind-rn";
 import StackNavigator from "./navigation/StackNavigator";
 import {NavigationContainer} from "@react-navigation/native";
+import {AuthProvider} from "./hooks/useAuth";
 
 export default function App() {
   return (
     <NavigationContainer>
-        <StackNavigator />
-        <StatusBar style="auto" />
+        {/* higher order component, pattern, where we have higher order components (just wrapping)*/}
+        <AuthProvider>
+            <StackNavigator />
+            <StatusBar style="auto" />
+        </AuthProvider>
     </NavigationContainer>
   );
 }

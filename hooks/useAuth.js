@@ -11,8 +11,6 @@ import {auth} from "../firebase";
 
 const AuthContext = createContext({
     // initial state (empty)
-
-
 });
 
 

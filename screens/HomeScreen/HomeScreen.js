@@ -44,7 +44,7 @@ const HomeScreen = () => {
     // console.log(user)
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={tw('flex-1')}>
             {/* header */}
 
             <View style={tw('items-center flex-row justify-between px-5')}>
@@ -65,14 +65,17 @@ const HomeScreen = () => {
 
             {/* Cards */}
 
-            <Swiper
-                cards={DUMMY_DATA}
-                renderItem={card => (
-                    <View>
-
-                    </View>
-                )}
-            />
+            <View style={tw('flex-1 -mt-6')}>
+                <Swiper
+                    containerStyle={{backgroundColor: 'transparent'}}
+                    cards={DUMMY_DATA}
+                    renderCard={(card, i) => (
+                        <View key={i} style={tw('bg-white  h-3/4 rounded-xl relative')}>
+                            <Image source={{ uri: card?.photoUrl }} style={tw('absolute h-full w-full rounded-xl')} />
+                        </View>
+                    )}
+                />
+            </View>
 
             {/*<Button onPress={() => navigation.navigate('Chat')} title={'Go to chat Screen'}/>*/}
             {/*<Button onPress={logout} title={'Log Out'}/>*/}

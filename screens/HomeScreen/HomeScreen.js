@@ -22,7 +22,7 @@ const HomeScreen = () => {
             {/* header */}
 
             <View>
-                <TouchableOpacity>
+                <TouchableOpacity activeOpacity={0.5}>
                     <Image source={{ uri: user?.photoURL }} style={tw('h-10 w-10 rounded-full')} />
                 </TouchableOpacity>
 

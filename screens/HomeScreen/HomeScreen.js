@@ -4,6 +4,31 @@ import {useNavigation} from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
 import {Ionicons} from "@expo/vector-icons";
+import Swiper from "react-native-deck-swiper";
+
+const DUMMY_DATA = [
+    {
+        firstName: 'Rokas',
+        lastName: 'Rudzianskas',
+        occupation: 'Software Developer',
+        photoUrl: 'https://avatars.githubusercontent.com/u/38469892?v=4',
+        age: 19,
+    },
+    {
+        firstName: 'Elon',
+        lastName: 'Musk',
+        occupation: 'Software Developer',
+        photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg',
+        age: 40,
+    },
+    {
+        firstName: 'Johny',
+        lastName: 'Musk',
+        occupation: 'Software Developer',
+        photoUrl: 'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F61688aa1d4a8658c3f4d8640%2FAntonio-Juliano%2F0x0.jpg%3Ffit%3Dscale',
+        age: 21,
+    },
+];
 
 const HomeScreen = () => {
     const navigation = useNavigation();
@@ -36,10 +61,14 @@ const HomeScreen = () => {
                 </TouchableOpacity>
 
             </View>
-
-
-
             {/* End of the header */}
+
+            {/* Cards */}
+
+            <Swiper
+
+            />
+
             {/*<Button onPress={() => navigation.navigate('Chat')} title={'Go to chat Screen'}/>*/}
             {/*<Button onPress={logout} title={'Log Out'}/>*/}
         </SafeAreaView>

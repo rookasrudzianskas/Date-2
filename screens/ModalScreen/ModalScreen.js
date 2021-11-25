@@ -32,6 +32,8 @@ const ModalScreen = () => {
             job: job,
             age: age,
             timestamp: serverTimestamp(),
+        }).then(() => {
+            navigation.navigate('Home');
         });
     }
 

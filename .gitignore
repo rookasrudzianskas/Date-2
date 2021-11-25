@@ -14,3 +14,4 @@ web-build/
 .DS_Store
 GoogleService-Info.plist
 GoogleService-Info.plist
+google-services.json

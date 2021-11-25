@@ -33,11 +33,8 @@ export const AuthProvider = ({ children }) => {
                 const {idToken, accessToken } = loginResult;
                 const credential = GoogleAuthProvider.credential(idToken, accessToken);
                 await signInWithCredential(credential);
-
-
-            } else {
-                // login failed
             }
+            return Promise.reject();
         });
     }
 

@@ -44,6 +44,17 @@ export const AuthProvider = ({ children }) => {
         return unsub();
     }, []);
 
+
+    const logout = () => {
+        setLoading(true);
+
+        signOut().catch(error => {
+            setError(error);
+        }).finally(() => {
+            setLoading(false);
+        });
+    }
+
     const signInWithGoogle = async () => {
 
         setLoading(true);
@@ -65,6 +76,7 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{
             user,
             loading,
+            error,
             signInWithGoogle
         }}>
             {loadingInitial ? (

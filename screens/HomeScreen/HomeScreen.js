@@ -23,7 +23,7 @@ const HomeScreen = () => {
             {/* header */}
 
             <View style={tw('items-center flex-row justify-between px-5')}>
-                <TouchableOpacity activeOpacity={0.5} style={tw('')}>
+                <TouchableOpacity onPress={logout} activeOpacity={0.5} style={tw('')}>
                     <Image source={{ uri: user?.photoURL }} style={tw('h-10 w-10 rounded-full')} />
                 </TouchableOpacity>
 
@@ -32,7 +32,7 @@ const HomeScreen = () => {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={tw('')} activeOpacite={0.5}>
-                    <Ionicons name="chatbubbles-sharp" size={30} />
+                    <Ionicons name="chatbubbles-sharp" size={30} color={'#FF5864'} />
                 </TouchableOpacity>
 
             </View>

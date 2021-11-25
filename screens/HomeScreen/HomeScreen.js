@@ -71,6 +71,12 @@ const HomeScreen = () => {
                     cards={DUMMY_DATA}
                     stackSize={5}
                     cardIndex={0}
+                    onSwipedLeft={() => {
+                        console.log('swiped left passed');
+                    }}
+                    onSwipedRight={() => {
+                        console.log('swiped right matched');
+                    }}
                     overlayLabels={{
                         left: {
                             title: 'NOPE',

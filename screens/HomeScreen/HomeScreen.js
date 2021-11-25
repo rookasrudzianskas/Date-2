@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
 import {AntDesign, Entypo, FontAwesome5, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
-import {doc, onSnapshot} from "@firebase/firestore";
+import {collection, doc, onSnapshot} from "@firebase/firestore";
 import {db} from "../../firebase";
 
 const DUMMY_DATA = [
@@ -44,7 +44,7 @@ const HomeScreen = () => {
             headerShown: false,
         });
         const unsub = onSnapshot(doc(db, 'users', user.uid), snapshot => {
-            if(!snapshot.exists) {
+            if(!snapshot.exists()) {
                 navigation.navigate('Modal');
             }
         });
@@ -55,8 +55,24 @@ const HomeScreen = () => {
     // console.log(user)
 
     useEffect(() => {
+        let unsub;
 
+        const fetchCards = () => {
+            const unsub = onSnapshot(collection(db, 'users'), snapshot => {
+                setProfiles(snapshot.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data(),
+                    }))
+                );
+            });
+        };
+
+        fetchCards();
+
+        return () => unsub();
     }, []);
+
+    console.log(profiles);
 
     return (
         <SafeAreaView style={tw('flex-1')}>

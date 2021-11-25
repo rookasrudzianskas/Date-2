@@ -7,7 +7,7 @@ const HomeScreen = () => {
 
     return (
         <View>
-            <Button onPress={() => navigation.navigate('ChatScreen')} title={'Go to chat Screen'}/>
+            <Button onPress={() => navigation.navigate('Chat')} title={'Go to chat Screen'}/>
         </View>
     );
 };

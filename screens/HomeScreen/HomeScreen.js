@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image} f
 import {useNavigation} from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
-import {AntDesign, Entypo, Ionicons} from "@expo/vector-icons";
+import {AntDesign, Entypo, FontAwesome5, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
 
 const DUMMY_DATA = [
@@ -103,7 +103,7 @@ const HomeScreen = () => {
                     }}
                     animateCardOpacity={true}
                     verticalSwipe={false}
-                    renderCard={(card, i) => (
+                    renderCard={(card, i) => card ? (
                         <View key={i} style={tw('bg-white  h-3/4 rounded-xl relative')}>
                             <Image source={{ uri: card?.photoUrl }} style={tw('absolute h-full w-full rounded-xl')} />
 
@@ -114,6 +114,16 @@ const HomeScreen = () => {
                                 </View>
                                 <Text style={tw('text-2xl font-bold')}>{card?.age}</Text>
                             </View>
+                        </View>
+                    ) : (
+                        <View style={[tw('relative bg-white h-3/4 rounded-xl justify-center items-center'), styles.cardShadow]}>
+                            <Text style={tw('font-bold pb-5')}>No more profile pictures</Text>
+                            <FontAwesome5 name="sad-cry" size={60} color='#fe3c72' />
+                            {/*<Image*/}
+                            {/*    style={tw('h-20 w-full')} />*/}
+                            {/*    height={100}*/}
+                            {/*    width={100}*/}
+                            {/*    source={{ uri: 'https://links.papareact.com/6gb' }}*/}
                         </View>
                     )}
                 />

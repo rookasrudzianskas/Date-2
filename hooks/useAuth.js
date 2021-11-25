@@ -5,12 +5,16 @@ import * as Google from 'expo-google-app-auth';
 
 const AuthContext = createContext({
     // initial state (empty)
+    const signInWithGoogle = async () => {
+
+    }
+
 });
 
 export const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={{
-            user: 'Rokas'
+            user: null
         }}>
             {children}
         </AuthContext.Provider>

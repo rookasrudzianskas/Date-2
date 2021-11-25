@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useRef, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
 import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
@@ -44,6 +44,10 @@ const HomeScreen = () => {
     }, []);
 
     // console.log(user)
+
+    useEffect(() => {
+
+    }, []);
 
     return (
         <SafeAreaView style={tw('flex-1')}>

@@ -71,17 +71,38 @@ const HomeScreen = () => {
                     cards={DUMMY_DATA}
                     stackSize={5}
                     cardIndex={0}
+                    overlayLabels={{
+                        left: {
+                            title: 'NOPE',
+                            style: {
+                                label: {
+                                    textAlign: 'right',
+                                    color: 'red',
+                                }
+                            }
+                        },
+                        right: {
+                            title: 'LIKE',
+                            style: {
+                                label: {
+                                    textAlign: 'left',
+                                    color: 'green',
+                                }
+                            }
+                        }
+                    }}
                     animateCardOpacity={true}
                     verticalSwipe={false}
                     renderCard={(card, i) => (
                         <View key={i} style={tw('bg-white  h-3/4 rounded-xl relative')}>
                             <Image source={{ uri: card?.photoUrl }} style={tw('absolute h-full w-full rounded-xl')} />
-                            <View>
+
+                            <View style={[tw('bg-white flex-row w-full h-20 absolute bottom-0 justify-between items-between px-6 py-2 rounded-b-xl'), styles.cardShadow]}>
                                 <View>
-                                    <Text>{card?.firstName} {card?.lastName}</Text>
-                                    <Text>{card?.job}</Text>
+                                    <Text style={tw('text-xl font-bold')} >{card?.firstName} {card?.lastName}</Text>
+                                    <Text >{card?.job}</Text>
                                 </View>
-                                <Text>{card?.age}</Text>
+                                <Text style={tw('text-2xl font-bold')}>{card?.age}</Text>
                             </View>
                         </View>
                     )}
@@ -95,3 +116,17 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+
+const styles = StyleSheet.create({
+    cardShadow: {
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 1.41,
+        elevation: 2,
+    },
+})

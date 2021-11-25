@@ -66,7 +66,12 @@ const HomeScreen = () => {
             {/* Cards */}
 
             <Swiper
+                cards={DUMMY_DATA}
+                renderItem={card => (
+                    <View>
 
+                    </View>
+                )}
             />
 
             {/*<Button onPress={() => navigation.navigate('Chat')} title={'Go to chat Screen'}/>*/}

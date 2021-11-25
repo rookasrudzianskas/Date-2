@@ -72,7 +72,7 @@ const HomeScreen = () => {
         return () => unsub();
     }, []);
 
-    console.log(profiles);
+    // console.log(profiles);
 
     return (
         <SafeAreaView style={tw('flex-1')}>

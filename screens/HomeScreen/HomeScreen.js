@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
 import {AntDesign, Entypo, FontAwesome5, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
-import {collection, doc, onSnapshot} from "@firebase/firestore";
+import {collection, doc, onSnapshot, setDoc} from "@firebase/firestore";
 import {db} from "../../firebase";
 
 const DUMMY_DATA = [
@@ -72,7 +72,18 @@ const HomeScreen = () => {
         return () => unsub();
     }, []);
 
-    const swipeLeft = async () => {
+    const swipeLeft = async (cardIndex) => {
+        if(!profiles[cardIndex]) {
+            return;
+        }
+
+        const userSwiped = profiles[cardIndex];
+        console.log(`You have swiped PASS on ${userSwiped.displayName}`);
+        // upload to the firebase;
+        setDoc(doc(db, 'users', user.uid, 'passes', userSwiped.id), userSwiped);
+    }
+
+    const swipeRight = async () => {
 
     }
 
@@ -110,11 +121,11 @@ const HomeScreen = () => {
                     ref={swipeRef}
                     onSwipedLeft={(cardIndex) => {
                         // console.log('swiped left passed');
-                        swipeLeft(cardIndex)
+                        swipeLeft(cardIndex);
                     }}
                     onSwipedRight={(cardIndex) => {
                         // console.log('swiped right matched');
-                        swipeLeft(cardIndex)
+                        swipeRight(cardIndex);
                     }}
                     overlayLabels={{
                         left: {

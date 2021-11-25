@@ -81,13 +81,7 @@ export const AuthProvider = ({ children }) => {
             signInWithGoogle
         }}>
             {!loadingInitial && children}
-            {/*    // <View style={tw('flex items-center justify-center')}>*/}
-            {/*    //     <ActivityIndicator size={'large'} color={'blue'} />*/}
-            {/*    // </View>*/}
-            {/*// ) : (*/}
-            {/*//     <>*/}
-            {/*//     </>*/}
-            {/*// )}*/}
+
         </AuthContext.Provider>
     );
 };

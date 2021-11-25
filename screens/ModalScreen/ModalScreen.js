@@ -1,5 +1,5 @@
 import React, {useLayoutEffect, useState} from 'react';
-import {Text, View, StyleSheet, Image, TextInput, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Alert} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import tw from "tailwind-rn";
 import useAuth from "../../hooks/useAuth";
@@ -34,6 +34,8 @@ const ModalScreen = () => {
             timestamp: serverTimestamp(),
         }).then(() => {
             navigation.navigate('Home');
+        }).catch(error => {
+            Alert.alert(error);
         });
     }
 

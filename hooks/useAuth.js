@@ -5,13 +5,22 @@ import * as Google from 'expo-google-app-auth';
 
 const AuthContext = createContext({
     // initial state (empty)
-    // const signInWithGoogle = async () => {
-    //     await Google.logInAsync(config);
-    // }
+
 
 });
 
+
+const config = {
+    scopes: ['profile', 'email'],
+    permissions: ['public_profile', 'email', 'gender', 'location'],
+}
+
 export const AuthProvider = ({ children }) => {
+
+    const signInWithGoogle = async () => {
+        await Google.logInAsync(config);
+    }
+
     return (
         <AuthContext.Provider value={{
             user: null

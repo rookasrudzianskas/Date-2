@@ -77,6 +77,7 @@ export const AuthProvider = ({ children }) => {
             user,
             loading,
             error,
+            logout,
             signInWithGoogle
         }}>
             {loadingInitial ? (

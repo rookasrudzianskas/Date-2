@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     const [loadingInitial, setLoadingInitial] = useState(true);
 
     useEffect(() =>  {
-        onAuthStateChanged(auth, (user) => {
+        const unsub = onAuthStateChanged(auth, (user) => {
             if(user) {
                 // logged in
                 setUser(user);
@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }) => {
 
             setLoadingInitial(false);
         });
+        return unsub();
     }, []);
 
     const signInWithGoogle = async () => {

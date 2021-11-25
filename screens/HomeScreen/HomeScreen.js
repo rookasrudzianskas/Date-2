@@ -120,11 +120,11 @@ const HomeScreen = () => {
 
             <View style={tw('flex flex-row justify-evenly')}>
 
-                <TouchableOpacity activeOpacity={0.5} style={tw('items-center justify-center rounded-full w-16 h-16 bg-red-200')}>
+                <TouchableOpacity onPress={() => swipeRef.current.swipeLeft()} activeOpacity={0.5} style={tw('items-center justify-center rounded-full w-16 h-16 bg-red-200')}>
                     <Entypo name={'cross'} size={24} color={'red'} />
                 </TouchableOpacity>
 
-                <TouchableOpacity activeOpacity={0.5} style={tw('items-center justify-center rounded-full w-16 h-16 bg-green-200')}>
+                <TouchableOpacity onPress={() => swipeRef.current.swipeRight()} activeOpacity={0.5} style={tw('items-center justify-center rounded-full w-16 h-16 bg-green-200')}>
                     <AntDesign name={'heart'} size={24} color={'green'} />
                 </TouchableOpacity>
 

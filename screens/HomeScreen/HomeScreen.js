@@ -10,21 +10,21 @@ const DUMMY_DATA = [
     {
         firstName: 'Rokas',
         lastName: 'Rudzianskas',
-        occupation: 'Software Developer',
+        job: 'Software Developer',
         photoUrl: 'https://avatars.githubusercontent.com/u/38469892?v=4',
         age: 19,
     },
     {
         firstName: 'Elon',
         lastName: 'Musk',
-        occupation: 'Software Developer',
+        job: 'Software Developer',
         photoUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg',
         age: 40,
     },
     {
         firstName: 'Johny',
         lastName: 'Musk',
-        occupation: 'Software Developer',
+        job: 'Software Developer',
         photoUrl: 'https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F61688aa1d4a8658c3f4d8640%2FAntonio-Juliano%2F0x0.jpg%3Ffit%3Dscale',
         age: 21,
     },
@@ -69,9 +69,20 @@ const HomeScreen = () => {
                 <Swiper
                     containerStyle={{backgroundColor: 'transparent'}}
                     cards={DUMMY_DATA}
+                    stackSize={5}
+                    cardIndex={0}
+                    animateCardOpacity={true}
+                    verticalSwipe={false}
                     renderCard={(card, i) => (
                         <View key={i} style={tw('bg-white  h-3/4 rounded-xl relative')}>
                             <Image source={{ uri: card?.photoUrl }} style={tw('absolute h-full w-full rounded-xl')} />
+                            <View>
+                                <View>
+                                    <Text>{card?.firstName} {card?.lastName}</Text>
+                                    <Text>{card?.job}</Text>
+                                </View>
+                                <Text>{card?.age}</Text>
+                            </View>
                         </View>
                     )}
                 />

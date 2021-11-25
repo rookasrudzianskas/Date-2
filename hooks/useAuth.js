@@ -19,6 +19,8 @@ const config = {
 
 export const AuthProvider = ({ children }) => {
 
+
+
     const signInWithGoogle = async () => {
         Google.logInAsync(config).then(async (loginResult) => {
             if(loginResult.type === 'success') {

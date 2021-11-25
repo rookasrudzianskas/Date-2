@@ -1,5 +1,5 @@
 import React, {createContext, useState, useContext, useEffect} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, ActivityIndicator} from 'react-native';
 import * as Google from 'expo-google-app-auth';
 import {
     GoogleAuthProvider,
@@ -63,7 +63,15 @@ export const AuthProvider = ({ children }) => {
             user,
             signInWithGoogle
         }}>
-            {children}
+            {loadingInitial ? (
+                <View>
+                    <ActivityIndicator size={'large'} color={'blue'} />
+                </View>
+            ) : (
+                <>
+                    {children}
+                </>
+            )}
         </AuthContext.Provider>
     );
 };

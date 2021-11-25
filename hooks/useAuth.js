@@ -20,12 +20,19 @@ const config = {
 export const AuthProvider = ({ children }) => {
 
     const signInWithGoogle = async () => {
-        await Google.logInAsync(config);
+        Google.logInAsync(config).then(async (loginResult) => {
+            if(loginResult.type === 'success') {
+            //    login
+            } else {
+                // login failed
+            }
+        });
     }
 
     return (
         <AuthContext.Provider value={{
-            user: null
+            user: null,
+            signInWithGoogle
         }}>
             {children}
         </AuthContext.Provider>

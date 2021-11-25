@@ -1,4 +1,4 @@
-import React, {createContext, useState, useContext} from 'react';
+import React, {createContext, useState, useContext, useEffect} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import * as Google from 'expo-google-app-auth';
 import {
@@ -26,10 +26,19 @@ const config = {
 export const AuthProvider = ({ children }) => {
 
     const [error, setError] = useState(null);
+    const [user, setUser] = useState(null);
 
     useEffect(() =>  {
-
-    }, [auth]);
+        onAuthStateChanged(auth, () => {
+            if(user) {
+                // logged in
+                setUser(user);
+            } else {
+                // logged out
+                setUser(null);
+            }
+        });
+    }, []);
 
     const signInWithGoogle = async () => {
         await Google.logInAsync(config).then(async (loginResult) => {
@@ -47,7 +56,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={{
-            user: null,
+            user: user,
             signInWithGoogle
         }}>
             {children}

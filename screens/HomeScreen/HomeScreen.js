@@ -5,6 +5,8 @@ import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
 import {AntDesign, Entypo, FontAwesome5, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
+import {doc, onSnapshot} from "@firebase/firestore";
+import {db} from "../../firebase";
 
 const DUMMY_DATA = [
     {
@@ -41,6 +43,13 @@ const HomeScreen = () => {
         navigation.setOptions({
             headerShown: false,
         });
+        const unsub = onSnapshot(doc(db, 'users', user.uid), snapshot => {
+            if(!snapshot.exists) {
+                navigation.navigate('Modal');
+            }
+        });
+
+        return () => unsub();
     }, []);
 
     // console.log(user)

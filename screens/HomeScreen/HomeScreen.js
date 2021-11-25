@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image} f
 import {useNavigation} from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
-import {Entypo, Ionicons} from "@expo/vector-icons";
+import {AntDesign, Entypo, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
 
 const DUMMY_DATA = [
@@ -120,12 +120,12 @@ const HomeScreen = () => {
 
             <View style={tw('flex flex-row justify-evenly')}>
 
-                <TouchableOpacity>
-                    <Entypo name={'cross'} size={30} />
+                <TouchableOpacity activeOpacity={0.5} style={tw('items-center justify-center rounded-full w-16 h-16 bg-red-200')}>
+                    <Entypo name={'cross'} size={24} color={'red'} />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
-                    <Entypo name={'cross'} size={30} />
+                <TouchableOpacity activeOpacity={0.5} style={tw('items-center justify-center rounded-full w-16 h-16 bg-green-200')}>
+                    <AntDesign name={'heart'} size={24} color={'green'} />
                 </TouchableOpacity>
 
             </View>

@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         setLoading(true);
 
-        signOut().catch(error => {
+        signOut(auth).catch(error => {
             setError(error);
         }).finally(() => {
             setLoading(false);

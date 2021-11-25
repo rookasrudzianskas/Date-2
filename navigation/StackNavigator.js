@@ -15,7 +15,9 @@ const StackNavigator = () => {
     const { user } = useAuth();
 
     return (
-        <Stack.Navigator initialRouteName={LoginScreen}>
+        <Stack.Navigator initialRouteName={LoginScreen} defaultScreenOptions={{
+            headerShown: false,
+        }}>
             {user ? (
                 <>
                     <Stack.Screen name="Home" component={HomeScreen} />

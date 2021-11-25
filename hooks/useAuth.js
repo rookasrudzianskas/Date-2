@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);
     const [loadingInitial, setLoadingInitial] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() =>  {
         const unsub = onAuthStateChanged(auth, (user) => {
@@ -44,6 +45,9 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const signInWithGoogle = async () => {
+
+        setLoading(true);
+
         await Google.logInAsync(config).then(async (loginResult) => {
             if(loginResult.type === 'success') {
             //    login
@@ -54,12 +58,13 @@ export const AuthProvider = ({ children }) => {
             return Promise.reject();
         }).catch(err => {
             setError(err);
-        });
+        }).finally(() => setLoading(false));
     }
 
     return (
         <AuthContext.Provider value={{
             user,
+            loading,
             signInWithGoogle
         }}>
             {loadingInitial ? (

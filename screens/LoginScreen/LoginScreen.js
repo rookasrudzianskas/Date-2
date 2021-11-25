@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 const LoginScreen = () => {
 
     const {signInWithGoogle, loading} = useAuth();
+    const navigation = useNavigation();
 
     return (
         <View>

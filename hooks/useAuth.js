@@ -5,8 +5,9 @@ import {
     GoogleAuthProvider,
     onAuthStateChanged,
     signInWithCredential,
-    signOut,
 } from '@firebase/auth';
+import { getAuth, signOut } from "firebase/auth";
+
 import {auth} from "../firebase";
 import tw from 'tailwind-rn';
 
@@ -38,7 +39,6 @@ export const AuthProvider = ({ children }) => {
                 // logged out
                 setUser(null);
             }
-
             setLoadingInitial(false);
         });
         return unsub();

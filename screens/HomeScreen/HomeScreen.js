@@ -59,13 +59,14 @@ const HomeScreen = () => {
 
         const fetchCards = async () => {
             const passes = await getDocs(collection(db, 'users', user.uid, 'passes')).then((snapshot) => (
-                snapshot.docs.map(doc => doc.id)
+                snapshot.docs.map((doc) => doc.id)
             ));
 
             const swipes = await getDocs(collection(db, 'users', user.uid, 'passes')).then((snapshot) => (
-                snapshot.docs.map(doc => doc.id)
+                snapshot.docs.map((doc) => doc.id)
             ));
 
+            console.log(passes.length, swipes.length);
             const passedUserIds = passes.length > 0 ? passes : ['test'];
             const swipedUserIds = swipes.length > 0 ? swipes : ['test'];
 

@@ -64,8 +64,8 @@ const HomeScreen = () => {
 
             const passedUserIds = passes.length > 0 ? passes : ['test'];
 
-            const unsub = onSnapshot(query(collection(db, 'users'), where('id', 'not-in', [...passedUserIds])), snapshot => {
-                setProfiles(snapshot.docs.filter(doc => doc.id !== user.uid).map(doc => ({
+            const unsub = onSnapshot(query(collection(db, 'users'), where('id', 'not-in', [...passedUserIds])), (snapshot) => {
+                setProfiles(snapshot.docs.filter((doc) => doc.id !== user.uid).map((doc) => ({
                         id: doc.id,
                         ...doc.data(),
                     }))

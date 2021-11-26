@@ -58,7 +58,6 @@ const HomeScreen = () => {
         let unsub;
 
         const fetchCards = () => {
-
             const passes = getDocs(collection(db, 'users', user.uid, 'passes')).then(snapshot => (
                 snapshot.docs.map(doc => doc.id)
             ));

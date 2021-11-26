@@ -64,7 +64,7 @@ const HomeScreen = () => {
 
             const passedUserIds = passes.length > 0 ? passes : ['test'];
 
-            const unsub = onSnapshot(query(collection(db, 'users'), where('id', 'not-in', [...passedUserIds])), (snapshot) => {
+            unsub = onSnapshot(query(collection(db, 'users'), where('id', 'not-in', [...passedUserIds])), (snapshot) => {
                 setProfiles(snapshot.docs.filter((doc) => doc.id !== user.uid).map((doc) => ({
                         id: doc.id,
                         ...doc.data(),
@@ -75,7 +75,7 @@ const HomeScreen = () => {
 
         fetchCards();
 
-        return () => unsub();
+        return () => unsub;
     }, []);
 
     const swipeLeft = async (cardIndex) => {
@@ -89,8 +89,13 @@ const HomeScreen = () => {
         setDoc(doc(db, 'users', user.uid, 'passes', userSwiped.id), userSwiped);
     }
 
-    const swipeRight = async () => {
+    const swipeRight = async (cardIndex) => {
+        if(!profiles[cardIndex]) {
+            return;
+        }
 
+        const userSwiped = profiles[cardIndex];
+        const loggedInProfile = await (await getDoc(doc(db, 'users', user.uid))).data();
     }
 
     // console.log(profiles);

@@ -95,7 +95,13 @@ const HomeScreen = () => {
         }
 
         const userSwiped = profiles[cardIndex];
-        const loggedInProfile = await (await getDoc(doc(db, 'users', user.uid))).data();
+        // const loggedInProfile = await (await getDoc(doc(db, 'users', user.uid))).data();
+
+        // user has swiped as first interaction between the two...
+        console.log(`You have swiped LIKE on ${userSwiped.displayName} (${userSwiped.job})`);
+
+        setDoc(doc(db, 'users', user.uid, 'swipes', userSwiped.id), userSwiped);
+
     }
 
     // console.log(profiles);

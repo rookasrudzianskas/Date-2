@@ -2,6 +2,7 @@ import React, {useLayoutEffect} from 'react';
 import {Text, View, StyleSheet, SafeAreaView} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import Header from "../../components/Header";
+import ChatList from "../../components/ChatList";
 
 const ChatScreen = () => {
 
@@ -15,7 +16,8 @@ const ChatScreen = () => {
 
     return (
         <SafeAreaView>
-            <Header title={'Chat'} />
+            <Header title={'Chat'} callEnabled={false} />
+            <ChatList />
         </SafeAreaView>
     );
 };

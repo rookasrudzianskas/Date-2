@@ -4,7 +4,7 @@ import tw from "tailwind-rn";
 import {Foundation, Ionicons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 
-const Header = ({title, callEnabled}) => {
+const Header = ({title, callEnabled }) => {
 
     const navigation = useNavigation();
 
@@ -16,6 +16,12 @@ const Header = ({title, callEnabled}) => {
                 </TouchableOpacity>
                 <Text style={tw('text-2xl font-bold pl-2')}>{title}</Text>
             </View>
+
+            {callEnabled && (
+                <TouchableOpacity style={tw('rounded-full mr-4 p-3 bg-red-200')}>
+                    <Foundation name="telephone" size={24} color="red"/>
+                </TouchableOpacity>
+            )}
         </View>
     );
 };

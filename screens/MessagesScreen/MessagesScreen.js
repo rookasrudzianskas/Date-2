@@ -45,6 +45,8 @@ const MessageScreen = () => {
             photoURL: matchDetails.users[user.uid].photoURL,
             message: input,
         });
+
+        setInput('');
     };
 
     return (

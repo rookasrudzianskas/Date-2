@@ -17,14 +17,14 @@ const ChatRow = ({matchDetails}) => {
     }, [matchDetails, user]);
 
     return (
-        <TouchableOpacity activeOpacity={0.5} style={[tw('flex-row items-center py-3 px-5 bg-white mx-3 my-1 rounded-lg'), styles.cardShadow]}>
+        <TouchableOpacity onPress={() => navigation.navigate('Message', {matchDetails})} activeOpacity={0.5} style={[tw('flex-row items-center py-3 px-5 bg-white mx-3 my-1 rounded-lg'), styles.cardShadow]}>
             <Image style={tw('rounded-full h-16 w-16 mr-4')} source={{ uri: matchedUserInfo?.photoURL}} />
 
             <View>
                 <Text style={tw('text-lg font-semibold')}>
                     {matchedUserInfo?.displayName}
                 </Text>
-                {/*<Text>{lastMessage || 'Say Hi!'}</Text>*/}
+                <Text>{'Say Hi!'}</Text>
             </View>
         </TouchableOpacity>
     );

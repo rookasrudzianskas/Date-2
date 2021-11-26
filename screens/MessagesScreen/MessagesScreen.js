@@ -25,7 +25,7 @@ const MessageScreen = () => {
     const navigation = useNavigation();
     const {params} = useRoute();
     // please define the state for the input with blank string
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState("");
     const [messages, setMessages] = useState([]);
 
     const { matchDetails } = params;
@@ -37,8 +37,9 @@ const MessageScreen = () => {
         });
     }, []);
 
-    const sendMessage = () => {
-        addDoc(collection(db, 'matches', matchDetails.id, 'messages'), {
+    const sendMessage = async () => {
+        // console.log('I am here!')
+        await addDoc(collection(db, 'matches', matchDetails.id, 'messages'), {
             timestamp: serverTimestamp(),
             userId: user.uid,
             displayName: user.displayName,
@@ -46,6 +47,7 @@ const MessageScreen = () => {
             message: input,
         });
 
+        // console.log('I am here! Dine')
         setInput('');
     };
 
@@ -68,7 +70,7 @@ const MessageScreen = () => {
                 <View
                     style={tw('flex-row justify-between items-center border-t border-gray-200 px-5 py-2')}
                 >
-                    <TextInput style={tw('h-10 text-lg')} placeholder="Send a message..." onChangeText={setInput} onSubmitEditing={sendMessage} />
+                    <TextInput value={input} style={tw('h-10 text-lg')} placeholder="Send a message..." onChangeText={(text) => setInput(text)} onSubmitEditing={sendMessage} />
                     <Button title={'Send'} color="#FF5864" onPress={sendMessage}/>
                 </View>
 

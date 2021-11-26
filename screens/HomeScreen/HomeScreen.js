@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
 import {AntDesign, Entypo, FontAwesome5, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
-import {collection, query, doc, getDocs, onSnapshot, setDoc, where} from "@firebase/firestore";
+import {collection, query, doc, getDocs, getDoc, onSnapshot, setDoc, where} from "@firebase/firestore";
 import {db} from "../../firebase";
 
 const DUMMY_DATA = [
@@ -104,6 +104,13 @@ const HomeScreen = () => {
 
         const userSwiped = profiles[cardIndex];
         const loggedInProfile = await (await getDoc(doc(db, 'users', user.uid))).data();
+
+        // check if user swipes on yourself
+        getDoc(doc(db, 'users', userSwiped.id, 'swipes', user.uid)).then((documentSnapshot) => {
+            if(documentSnapshot.exists()) {
+                // the user has matched with you before you matched with them.
+            }
+        })
 
         // user has swiped as first interaction between the two...
         console.log(`You have swiped LIKE on ${userSwiped.displayName} (${userSwiped.job})`);

@@ -83,6 +83,7 @@ const MessageScreen = () => {
                     <Button title={'Send'} color="#FF5864" onPress={sendMessage}/>
                 </View>
 
+
             </KeyboardAvoidingView>
 
 

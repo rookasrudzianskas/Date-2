@@ -24,6 +24,7 @@ const ChatList = () => {
 
     return matches.length > 0 ? (
         <FlatList
+            style={tw('h-full')}
             data={matches}
             keyExtractor={item => item.id}
             renderItem={(({item}) => <ChatRow matchDetails={item} />)}

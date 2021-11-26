@@ -62,8 +62,6 @@ const HomeScreen = () => {
                 snapshot.docs.map(doc => doc.id)
             ));
 
-            console.log(passes);
-
             const passedUserIds = passes.length > 0 ? passes : ['test'];
 
             const unsub = onSnapshot(query(collection(db, 'users'), where('id', 'not-in', [...passedUserIds])), snapshot => {

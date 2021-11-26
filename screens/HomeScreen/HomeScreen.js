@@ -62,7 +62,7 @@ const HomeScreen = () => {
                 snapshot.docs.map((doc) => doc.id)
             ));
 
-            const swipes = await getDocs(collection(db, 'users', user.uid, 'passes')).then((snapshot) => (
+            const swipes = await getDocs(collection(db, 'users', user.uid, 'swipes')).then((snapshot) => (
                 snapshot.docs.map((doc) => doc.id)
             ));
 
@@ -84,7 +84,7 @@ const HomeScreen = () => {
         fetchCards();
 
         return () => unsub;
-    }, [db, ]);
+    }, [db]);
 
     const swipeLeft = async (cardIndex) => {
         if(!profiles[cardIndex]) {

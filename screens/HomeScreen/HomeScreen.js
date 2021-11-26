@@ -7,6 +7,7 @@ import {AntDesign, Entypo, FontAwesome5, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
 import {collection, query, doc, getDocs, getDoc, onSnapshot, setDoc, where, serverTimestamp} from "@firebase/firestore";
 import {db} from "../../firebase";
+import generateId from "../../lib/generateId";
 
 const DUMMY_DATA = [
     {
@@ -128,7 +129,7 @@ const HomeScreen = () => {
                 });
             } else {
                 // the user has not matched with you before... or did not swiped right on you
-                console.log(`You have swiped NO on ${userSwiped.displayName}`);
+                // console.log(`You have swiped NO on ${userSwiped.displayName}`);
             }
         });
 

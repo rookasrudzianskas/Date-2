@@ -1,11 +1,11 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from 'react';
-import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image} from 'react-native';
+import {Text, View, StyleSheet, Button, SafeAreaView, TouchableOpacity, Image, Alert} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
 import {AntDesign, Entypo, FontAwesome5, Ionicons} from "@expo/vector-icons";
 import Swiper from "react-native-deck-swiper";
-import {collection, query, doc, getDocs, getDoc, onSnapshot, setDoc, where} from "@firebase/firestore";
+import {collection, query, doc, getDocs, getDoc, onSnapshot, setDoc, where, serverTimestamp} from "@firebase/firestore";
 import {db} from "../../firebase";
 
 const DUMMY_DATA = [
@@ -108,9 +108,29 @@ const HomeScreen = () => {
         // check if user swipes on yourself
         getDoc(doc(db, 'users', userSwiped.id, 'swipes', user.uid)).then((documentSnapshot) => {
             if(documentSnapshot.exists()) {
-                // the user has matched with you before you matched with them.
+                // the user has matched with you before you matched with them...
+                Alert.alert(`You have matched with ${userSwiped.displayName}`);
+
+                setDoc(doc(db, 'users', user.uid, 'swipes', userSwiped.id), userSwiped);
+
+                // create a match
+                setDoc(doc(db, 'matches', generateId(user.uid, userSwiped.id)), {
+                    users: {
+                        [user.uid]: loggedInProfile,
+                        [userSwiped.id]: userSwiped,
+                    },
+                    usersMatched: [user.uid, userSwiped.id],
+                    timestamp: serverTimestamp(),
+                });
+
+                navigation.navigate('Match', {
+                    loggedInProfile, userSwiped,
+                });
+            } else {
+                // the user has not matched with you before... or did not swiped right on you
+                console.log(`You have swiped NO on ${userSwiped.displayName}`);
             }
-        })
+        });
 
         // user has swiped as first interaction between the two...
         console.log(`You have swiped LIKE on ${userSwiped.displayName} (${userSwiped.job})`);

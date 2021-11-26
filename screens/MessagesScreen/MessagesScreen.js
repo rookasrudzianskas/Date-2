@@ -1,4 +1,4 @@
-import React, {useLayoutEffect, useState} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import {
     Text,
     View,
@@ -17,7 +17,7 @@ import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
 import ReceiverMessage from "../../components/ReceiverMessage";
 import SenderMessage from "../../components/SenderMessage";
-import {addDoc, collection, serverTimestamp} from "@firebase/firestore";
+import {addDoc, collection, onSnapshot, orderBy, query, serverTimestamp} from "@firebase/firestore";
 import {db} from "../../firebase";
 
 const MessageScreen = () => {
@@ -36,6 +36,15 @@ const MessageScreen = () => {
             headerShown: false,
         });
     }, []);
+
+
+    useEffect(() => {
+        const unsub = onSnapshot(query(collection(db, 'matches', matchDetails.id, 'messages'), orderBy('timestamp', 'desc')), (snapshot => setMessages(snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+        })))));
+        return () => unsub;
+    }, [matchDetails, db])
 
     const sendMessage = async () => {
         // console.log('I am here!')
@@ -59,7 +68,7 @@ const MessageScreen = () => {
             <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={tw("flex-1")} keyboardVerticalOffset={10} >
 
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                    <FlatList data={messages} style={tw('pl-4')} keyExtractor={(item) => item.id} renderItem={({item: message}) =>
+                    <FlatList inverted={-1} data={messages} style={tw('pl-4')} keyExtractor={(item) => item.id} renderItem={({item: message}) =>
                         message.userId === user.uid ? (
                             <SenderMessage key={message.id} message={message} />
                         ) : (

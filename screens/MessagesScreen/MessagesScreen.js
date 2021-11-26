@@ -1,15 +1,17 @@
 import React, {useLayoutEffect} from 'react';
 import {Text, View, StyleSheet, SafeAreaView} from 'react-native';
 import Header from "../../components/Header";
-import {useNavigation} from "@react-navigation/native";
+import {useNavigation, useRoute} from "@react-navigation/native";
 import getMatchedUserInfo from "../../lib/getMatchedUserInfo";
 import useAuth from "../../hooks/useAuth";
 
-const MessageScreen = ({matchDetails}) => {
+const MessageScreen = () => {
 
     const navigation = useNavigation();
+    const {params} = useRoute();
 
-    const user = useAuth();
+    const { matchDetails } = params;
+    const {user} = useAuth();
 
     useLayoutEffect(() => {
         navigation.setOptions({

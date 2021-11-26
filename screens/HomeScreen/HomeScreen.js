@@ -66,11 +66,11 @@ const HomeScreen = () => {
                 snapshot.docs.map((doc) => doc.id)
             ));
 
-            console.log(passes.length, swipes.length);
+            // console.log(passes.length, swipes.length);
             const passedUserIds = passes.length > 0 ? passes : ['test'];
             const swipedUserIds = swipes.length > 0 ? swipes : ['test'];
 
-            console.log([...passedUserIds, ...swipedUserIds]);
+            // console.log([...passedUserIds, ...swipedUserIds]);
 
             unsub = onSnapshot(query(collection(db, 'users'), where('id', 'not-in', [...passedUserIds, ...swipedUserIds])), (snapshot) => {
                 setProfiles(snapshot.docs.filter((doc) => doc.id !== user.uid).map((doc) => ({
@@ -103,7 +103,7 @@ const HomeScreen = () => {
         }
 
         const userSwiped = profiles[cardIndex];
-        // const loggedInProfile = await (await getDoc(doc(db, 'users', user.uid))).data();
+        const loggedInProfile = await (await getDoc(doc(db, 'users', user.uid))).data();
 
         // user has swiped as first interaction between the two...
         console.log(`You have swiped LIKE on ${userSwiped.displayName} (${userSwiped.job})`);

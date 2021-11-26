@@ -57,10 +57,12 @@ const HomeScreen = () => {
     useEffect(() => {
         let unsub;
 
-        const fetchCards = () => {
-            const passes = getDocs(collection(db, 'users', user.uid, 'passes')).then(snapshot => (
+        const fetchCards = async () => {
+            const passes = await getDocs(collection(db, 'users', user.uid, 'passes')).then((snapshot) => (
                 snapshot.docs.map(doc => doc.id)
             ));
+
+            console.log(passes);
 
             const passedUserIds = passes.length > 0 ? passes : ['test'];
 

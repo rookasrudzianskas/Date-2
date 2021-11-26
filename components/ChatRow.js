@@ -16,7 +16,8 @@ const ChatRow = ({matchDetails}) => {
     const [lastMessage, setLastMessage] = useState('');
 
     useEffect(() => {
-        onSnapshot(query(collection(db, 'matches', matchDetails.id, 'messages'), orderBy('timestamp', 'desc')), snapshot => setLastMessage(snapshot.docs[0].data()?.message));
+        const unsub = onSnapshot(query(collection(db, 'matches', matchDetails.id, 'messages'), orderBy('timestamp', 'desc')), snapshot => setLastMessage(snapshot.docs[0].data()?.message));
+        return () => unsub;
     }, [matchDetails, db]);
 
     useEffect(() => {

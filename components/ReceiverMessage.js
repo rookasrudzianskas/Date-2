@@ -1,11 +1,13 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Image} from 'react-native';
+import tw from "tailwind-rn";
 
 const ReceiverMessage = ({message}) => {
     return (
-        <View>
-            <Text>
-                byrookas 🚀
+        <View style={[tw('bg-red-400 rounded-lg rounded-tl-none px-5 py-3 mx-3 my-2 ml-14'), {alignSelf: 'flex-start'}]}>
+            <Image source={{uri: message.photoURL}} style={tw('h-12 w-12 rounded-full absolute top-0 -left-14')} />
+            <Text style={tw('text-white')}>
+                {message.message}
             </Text>
         </View>
     );

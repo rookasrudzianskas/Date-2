@@ -17,6 +17,8 @@ import useAuth from "../../hooks/useAuth";
 import tw from "tailwind-rn";
 import ReceiverMessage from "../../components/ReceiverMessage";
 import SenderMessage from "../../components/SenderMessage";
+import {addDoc, collection, serverTimestamp} from "@firebase/firestore";
+import {db} from "../../firebase";
 
 const MessageScreen = () => {
 
@@ -36,8 +38,14 @@ const MessageScreen = () => {
     }, []);
 
     const sendMessage = () => {
-
-    }
+        addDoc(collection(db, 'matches', matchDetails.id, 'messages'), {
+            timestamp: serverTimestamp(),
+            userId: user.uid,
+            displayName: user.displayName,
+            photoURL: matchDetails.users[user.uid].photoURL,
+            message: input,
+        });
+    };
 
     return (
         <SafeAreaView style={tw('flex-1')}>
@@ -56,7 +64,7 @@ const MessageScreen = () => {
                     } />
                 </TouchableWithoutFeedback>
                 <View
-                    style={tw('flex-row justify-between bg-white items-center border-t border-gray-200 px-5 py-2')}
+                    style={tw('flex-row justify-between items-center border-t border-gray-200 px-5 py-2')}
                 >
                     <TextInput style={tw('h-10 text-lg')} placeholder="Send a message..." onChangeText={setInput} onSubmitEditing={sendMessage} />
                     <Button title={'Send'} color="#FF5864" onPress={sendMessage}/>
